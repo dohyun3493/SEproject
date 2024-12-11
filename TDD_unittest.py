@@ -29,10 +29,11 @@ class TDDUnittest(unittest.TestCase):
         self.assertEqual(self.car_controller.get_right_door_status(), "CLOSED")
         self.assertEqual(self.car_controller.get_speed() , 0)
 
-    def test_engine_brake(self):
+    # 브레이크 후 엑셀 밟고 엔진 입력된 경우
+    def test_brake_accel_engine(self):
         self.car_controller.unlock_vehicle()  # 차량 잠금 해제
 
-        execute_command_callback("ENGINE_BIN BRAKE", self.car_controller)
+        execute_command_callback("BRAKE ACCELERATE ENGINE_BTN", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status(), False)
 
     def test_06(self):
