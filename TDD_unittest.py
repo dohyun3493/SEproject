@@ -3,13 +3,23 @@ from car import Car
 from car_controller import CarController
 from main import execute_command_callback
 
-
-class TDDUnittest(unittest.TestCase):
+class TestTDDUnittest(unittest.TestCase):
     def setUp(self):
         self.car = Car()
         self.car_controller = CarController(self.car)
     
-
+    # ENGINE_BTN 이후 브레이크 동시 입력된 경우
+    def test_ENGINEBTN_BRAKE(self):
+        self.car_controller.unlock_vehicle()
+        execute_command_callback("ENGINE_BTN BRAKE", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() , False) 
+    
+    # ENGINE_BTN만 입력된 경우
+    def test_ENGINEBTN(self):
+        self.car_controller.unlock_vehicle()
+        execute_command_callback("ENGINE_BTN", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() , False) 
+        
 if __name__ == "__main__":
     unittest.main(exit = False)
     
