@@ -7,20 +7,11 @@ from gui import CarSimulatorGUI
 # -> 이 함수에서 시그널을 입력받고 처리하는 로직을 구성하면, 알아서 GUI에 연동이 됩니다.
 
 def execute_command_callback(command, car_controller):
-    result = command.split()
-    rts = False
-    if len(result) != 1:
-        if result[1] == "ENGINE_BTN" and result[0] == "BRAKE": 
-            command = "ENGINE_BTN"
-            rts = True
-    print("check = ", rts)
     if command == "ENGINE_BTN":
-        if rts == True:
-            if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
-                current_speed = car_controller.get_speed() # 현재 속도 확인
-                if current_speed == 0:
-                    car_controller.toggle_engine() # 시동 ON / OFF
-        rts = False
+        if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
+            current_speed = car_controller.get_speed() # 현재 속도 확인
+            if current_speed == 0:
+                car_controller.toggle_engine() # 시동 ON / OFF
     elif command == "ACCELERATE":
         if car_controller.get_lock_status() == False and car_controller.get_engine_status() == True :
             if car_controller.get_right_door_status() == "CLOSED" and car_controller.get_left_door_status() == "CLOSED":
