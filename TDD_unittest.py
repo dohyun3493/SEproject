@@ -26,6 +26,11 @@ class TDDUnittest(unittest.TestCase):
         execute_command_callback("ENGINE_BIN BRAKE", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status(), False)
 
+    def test_06(self):
+        self.car_controller.unlock_vehicle()
+        self.car_controller.toggle_engine()
+        execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() == True)
 
 if __name__ == "__main__":
     unittest.main(exit = False)
