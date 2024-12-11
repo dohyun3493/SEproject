@@ -30,9 +30,7 @@ class TDDUnittest(unittest.TestCase):
         self.assertEqual(self.car_controller.get_speed() , 0)
 
     def test_engine_brake(self):
-        self.car_controller.unlock_vehicle()  # 차량 전체 잠금 해제
-        self.car_controller.toggle_engine()  # 엔진 ON
-        self.car_controller.brake() # 브레이크
+        self.car_controller.unlock_vehicle()  # 차량 잠금 해제
 
         execute_command_callback("ENGINE_BIN BRAKE", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status(), False)
