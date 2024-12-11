@@ -26,7 +26,29 @@ class TDDUnittest(unittest.TestCase):
         execute_command_callback("ENGINE_BIN BRAKE", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status(), False)
 
+    def test_06(self):
+        self.car_controller.unlock_vehicle()
+        self.car_controller.toggle_engine()
+        execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() == True)
 
+class TestTDDUnittest(unittest.TestCase):
+    def setUp(self):
+        self.car = Car()
+        self.car_controller = CarController(self.car)
+    
+    # ENGINE_BTN 이후 브레이크 동시 입력된 경우
+    def test_ENGINEBTN_BRAKE(self):
+        self.car_controller.unlock_vehicle()
+        execute_command_callback("ENGINE_BTN BRAKE", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() , False) 
+    
+    # ENGINE_BTN만 입력된 경우
+    def test_ENGINEBTN(self):
+        self.car_controller.unlock_vehicle()
+        execute_command_callback("ENGINE_BTN", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() , False) 
+        
 if __name__ == "__main__":
     unittest.main(exit = False)
     
