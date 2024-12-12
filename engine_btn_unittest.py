@@ -24,6 +24,7 @@ class TestCarsos(unittest.TestCase):
     def test_engine_btn_when_vehicle_is_lock(self): 
         #ENGINE_BTN동작이 작동되는지 확인하기 위해 차량의 상태를 업데이트
         self.car_controller.lock_vehicle()
+        self.car_controller.toggle_engine()
         #ENGINE_BTN 호출
         execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
         #ENGINE_BTN 동작 이후 테스트 진행
