@@ -40,7 +40,7 @@ class TDDUnittest(unittest.TestCase):
         self.car_controller.unlock_vehicle()
         self.car_controller.toggle_engine()
         execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
-        self.assertEqual(self.car_controller.get_engine_status() == True)
+        self.assertEqual(self.car_controller.get_engine_status(), True)
 
     # 테스트케이스 6) 브레이크 이후 동시 입력으로 엔진 외에 다른 장치의 입력이 들어왔을 때 testcase
     def testSet_06(self):
