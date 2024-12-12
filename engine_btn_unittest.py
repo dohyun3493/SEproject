@@ -40,8 +40,6 @@ class TestCarsos(unittest.TestCase):
         #ENGINE_BTN 동작 이후 테스트 진행
         self.assertEqual(self.car_controller.get_engine_status() , True)
 
-    
-    
 
 if __name__ == "__main__":
     unittest.main(exit = False)
