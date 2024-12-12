@@ -3,7 +3,6 @@ from car import Car
 from car_controller import CarController
 from main import execute_command_callback
 
-
 # 테스트 케이스 1) 엔진 꺼진 상태에서 브레이크 후 엔진 동시 입력된 경우 
 class TDDUnittest01(unittest.TestCase):
     car = Car()
