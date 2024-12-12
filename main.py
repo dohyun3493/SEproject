@@ -11,17 +11,21 @@ def execute_command_callback(command, car_controller):
     pattern1 = "ENGINE_BTN"
     pattern2 = "BRAKE"
     rts = False
+
     if len(result) != 1:
         for i in range(0, len(result)):
 
             if(result[i] == pattern1):
-                print(result[i], result[i - 1])
                 if(i == 0): continue
                 if(result[i - 1] == pattern2):
                     command = "ENGINE_BTN"
                     rts = True
                     if(car_controller.get_engine_status() == True):
                         rts = False
+    else:
+        if(car_controller.get_engine_status() == True):
+            command = "ENGINE_BTN"
+            rts = True
     
     if command == "ENGINE_BTN":
         print(command, "Check")

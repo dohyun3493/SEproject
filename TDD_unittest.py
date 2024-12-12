@@ -16,7 +16,7 @@ class TDDUnittest01(unittest.TestCase):
         self.assertEqual(self.car_controller.get_engine_status() , True)
 
 # 테스트 케이스 2) 속도가 0일 때 엔진 켜진 상태에서 엔진 입력된 경우
-class TDDUnittest01(unittest.TestCase):
+class TDDUnittest02(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
@@ -37,7 +37,7 @@ class TDDUnittest03(unittest.TestCase):
         self.assertEqual(self.car_controller.get_engine_status() , False) 
 
 # 테스트케이스 4) 엔진 꺼진 상태에서 엔진만 입력된 경우
-class TDDUnittest03(unittest.TestCase):
+class TDDUnittest04(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
@@ -47,7 +47,7 @@ class TDDUnittest03(unittest.TestCase):
         self.assertEqual(self.car_controller.get_engine_status() , False) 
 
 # 테스트케이스 5) 엔진 꺼진 상태에서 다수의 입력 후 엔진 동시 입력된 경우
-class TDDUnittest04(unittest.TestCase):
+class TDDUnittest05(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
@@ -60,7 +60,7 @@ class TDDUnittest04(unittest.TestCase):
         self.assertEqual(self.car_controller.get_speed() , 0)
 
 # 테스트케이스 6) 엔진 꺼진 상태에서 브레이크 후 엑셀 밟고 엔진 동시 입력된 경우
-class TDDUnittest05(unittest.TestCase):
+class TDDUnittest06(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
@@ -70,7 +70,7 @@ class TDDUnittest05(unittest.TestCase):
         self.assertEqual(self.car_controller.get_engine_status(), False)
 
 # 테스트케이스 7) 엔진 켜진 상태에서 브레이크 후 엔진 동시 입력된 경우
-class TDDUnittest06(unittest.TestCase):
+class TDDUnittest07(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
@@ -82,7 +82,7 @@ class TDDUnittest06(unittest.TestCase):
 
 
 # 테스트케이스 8) 엔진 꺼진 상태에서 브레이크 이후 동시 입력으로 엔진 외에 다른 장치의 입력이 들어왔을 경우
-class TDDUnittest07(unittest.TestCase):
+class TDDUnittest08(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
