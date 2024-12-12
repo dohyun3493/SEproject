@@ -22,11 +22,11 @@ def execute_command_callback(command, car_controller):
                     rts = True
                     if(car_controller.get_engine_status() == True):
                         rts = False
-    else:
+
+    elif command == "ENGINE_BTN":
         if(car_controller.get_engine_status() == True):
-            command = "ENGINE_BTN"
             rts = True
-    
+
     if command == "ENGINE_BTN":
         if rts == True:
             if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
