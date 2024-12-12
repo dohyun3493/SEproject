@@ -20,6 +20,7 @@ class TDDUnittest(unittest.TestCase):
         execute_command_callback("ENGINE_BTN", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status() , False) 
     
+    
     # 테스트케이스 3) 다수의 입력 후 엔진 동시 입력된 경우
     def testSet_03(self):
         self.car_controller.unlock_vehicle()        
@@ -35,7 +36,7 @@ class TDDUnittest(unittest.TestCase):
         execute_command_callback("BRAKE ACCELERATE ENGINE_BTN", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status(), False)
         
-    # 테스트케이스 5) 브레이크 후 엔진 동시 입력된 경우
+    # 테스트케이스 5) 엔진 켜진 상태에서 브레이크 후 엔진 동시 입력된 경우
     def testSet_05(self):
         self.car_controller.unlock_vehicle()
         self.car_controller.toggle_engine()
@@ -48,7 +49,14 @@ class TDDUnittest(unittest.TestCase):
         self.car_controller.toggle_engine()
         execute_command_callback("BRAKE ACCELERTE", self.car_controller)
         self.assertEqual(self.car_controller.get_speed(), 0)
-        
+
+
+    # 테스트 케이스 7) 엔진 꺼진 상태에서 브레이크 후 엔진 동시 입력된 경우 
+    def testSet_07(self):
+        self.car_controller.unlock_vehicle()
+        execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
+        self.assertEqual(self.car_controller.get_engine_status() , True) 
+
 if __name__ == "__main__":
     unittest.main(exit = False)
     
