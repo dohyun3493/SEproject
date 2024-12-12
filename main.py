@@ -13,20 +13,18 @@ def execute_command_callback(command, car_controller):
     rts = False
     if len(result) != 1:
         for i in range(0, len(result)):
-            print("check1 = " , result[i])
+
             if(result[i] == pattern1):
-                print("check2 = " , result[i])
-                print("check3 = " , result[i - 1])
-                if(i == 0): rts = False
+                print(result[i], result[i - 1])
+                if(i == 0): continue
                 if(result[i - 1] == pattern2):
                     command = "ENGINE_BTN"
-                    rts = True      
-        """
-        if result[1] == "ENGINE_BTN" and result[0] == "BRAKE":
-            command = "ENGINE_BTN"
-            rts = True
-        """
+                    rts = True
+                    if(car_controller.get_engine_status() == True):
+                        rts = False
+    
     if command == "ENGINE_BTN":
+        print(command, "Check")
         if rts == True:
             if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
                 current_speed = car_controller.get_speed() # 현재 속도 확인
