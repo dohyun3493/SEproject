@@ -41,6 +41,16 @@ class TDDUnittest(unittest.TestCase):
         self.car_controller.toggle_engine()
         execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status() == True)
+
+    #브레이크 이후 동시 입력으로 엔진 외에 다른 장치의 입력이 들어왔을 때 testcase
+    def test_brake_no_engine_everyone(self):
+         #ENGINE_BTN동작이 작동되는지 확인하기 위해 차량의 상태를 업데이트
+        self.car_controller.unlock_vehicle()
+        self.car_controller.toggle_engine()
+        #브레이크 및 엔진외 다른 장치 동시 호출
+        execute_command_callback("BRAKE ACCELERTE", self.car_controller)
+        #BRAKE ACCELERATE동작 이후 테스트 진행
+        self.assertEqual(self.car_controller.get_speed(), 0)
         
 if __name__ == "__main__":
     unittest.main(exit = False)
