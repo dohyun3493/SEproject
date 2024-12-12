@@ -28,7 +28,6 @@ def execute_command_callback(command, car_controller):
             rts = True
     
     if command == "ENGINE_BTN":
-        print(command, "Check")
         if rts == True:
             if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
                 current_speed = car_controller.get_speed() # 현재 속도 확인
