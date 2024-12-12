@@ -42,7 +42,7 @@ class TDDUnittest04(unittest.TestCase):
 
     def testSet_04(self):
         self.car_controller.unlock_vehicle()      
-        execute_command_callback("LEFT_DOOR_OPEN ACCELERATE BRAKE RIGHT_DOOR_OPEN BRAKE ACCELERATE BRAKE BRAKE ENGINE_BIN",self.car_controller)
+        execute_command_callback("LEFT_DOOR_OPEN ACCELERATE BRAKE RIGHT_DOOR_OPEN BRAKE ACCELERATE BRAKE BRAKE ENGINE_BTN",self.car_controller)
         self.assertEqual(self.car_controller.get_engine_status(), True)
         self.assertEqual(self.car_controller.get_left_door_status(), "CLOSED")
         self.assertEqual(self.car_controller.get_right_door_status(), "CLOSED")
