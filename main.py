@@ -8,11 +8,24 @@ from gui import CarSimulatorGUI
 
 def execute_command_callback(command, car_controller):
     result = command.split()
+    pattern1 = "ENGINE_BTN"
+    pattern2 = "BRAKE"
     rts = False
     if len(result) != 1:
+        for i in range(0, len(result)):
+            print("check1 = " , result[i])
+            if(result[i] == pattern1):
+                print("check2 = " , result[i])
+                print("check3 = " , result[i - 1])
+                if(i == 0): rts = False
+                if(result[i - 1] == pattern2):
+                    command = "ENGINE_BTN"
+                    rts = True      
+        """
         if result[1] == "ENGINE_BTN" and result[0] == "BRAKE":
             command = "ENGINE_BTN"
             rts = True
+        """
     if command == "ENGINE_BTN":
         if rts == True:
             if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
