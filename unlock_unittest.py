@@ -3,7 +3,7 @@ from car import Car
 from car_controller import CarController
 from main import execute_command_callback
 
-class TestCarsos(unittest.TestCase):
+class TestUnlockState(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 

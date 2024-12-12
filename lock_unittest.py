@@ -3,7 +3,7 @@ from car import Car
 from car_controller import CarController
 from main import execute_command_callback
 
-class TestCarsos(unittest.TestCase):
+class TestLockState(unittest.TestCase):
     car = Car()
     car_controller = CarController(car)
 
@@ -21,13 +21,13 @@ class TestCarsos(unittest.TestCase):
         #LOCK동작이 작동되는지 확인하기 위해 차량의 상태를 업데이트
         self.car_controller.unlock_vehicle()
         self.car_controller.unlock_left_door()
-        self.car_controller.unlock_right_door()
+        self.car_controller.unlock_right_door() 
         self.car_controller.open_left_door()
         self.car_controller.open_right_door()
-        self.car_controller.open_trunk()
+        self.car_controller.open_trunk()        
         #LOCK 호출
         execute_command_callback("LOCK", self.car_controller)
-        #LOCK 동작 이후 테스트 진행
+        #LOCK 동작 이후 테스트 진행                          
         self.assertEqual(self.car_controller.get_lock_status() , True)  
         self.assertEqual(self.car_controller.get_left_door_lock() , "LOCKED") 
         self.assertEqual(self.car_controller.get_right_door_lock() , "LOCKED") 
