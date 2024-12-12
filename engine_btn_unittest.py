@@ -12,7 +12,7 @@ class TestCarsos(unittest.TestCase):
         #ENGINE_BTN동작이 작동되는지 확인하기 위해 차량의 상태를 업데이트
         self.car_controller.unlock_vehicle()
         #ENGINE_BTN 호출
-        execute_command_callback("ENGINE_BTN", self.car_controller)
+        execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
         #ENGINE_BTN 동작 이후 테스트 진행
         self.assertEqual(self.car_controller.get_engine_status() , True)  
         #ENGINE_BTN 호출
@@ -25,7 +25,7 @@ class TestCarsos(unittest.TestCase):
         #ENGINE_BTN동작이 작동되는지 확인하기 위해 차량의 상태를 업데이트
         self.car_controller.lock_vehicle()
         #ENGINE_BTN 호출
-        execute_command_callback("ENGINE_BTN", self.car_controller)
+        execute_command_callback("BRAKE ENGINE_BTN", self.car_controller)
         #ENGINE_BTN 동작 이후 테스트 진행
         self.assertEqual(self.car_controller.get_engine_status() , False)
 
