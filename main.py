@@ -19,7 +19,6 @@ def execute_command_callback(command, car_controller):
             execute_command_callback(result[i], car_controller)
         brake_flag = False
         return
-
     if command == "ENGINE_BTN":
         if car_controller.get_lock_status() == False: # 차량 잠금 상태가 해제되어 있는지 확인
             if car_controller.get_speed() == 0:
@@ -27,7 +26,6 @@ def execute_command_callback(command, car_controller):
                     car_controller.toggle_engine() # 시동 OFF
                 elif car_controller.get_engine_status() == False and brake_flag == True :
                     car_controller.toggle_engine() # 시동 ON
-
     elif command == "ACCELERATE":
         if brake_flag == False :
             if car_controller.get_lock_status() == False and car_controller.get_engine_status() == True :
@@ -41,7 +39,6 @@ def execute_command_callback(command, car_controller):
     elif command == "BRAKE":
         if car_controller.get_speed() > 0:
             car_controller.brake()
-
     elif command == "LOCK":
         # 차량 잠금 조건 확인
         if car_controller.get_lock_status() == False:  # 차량이 잠겨 있지 않은 경우
